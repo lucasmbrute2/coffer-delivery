@@ -11,4 +11,8 @@ export const GlobalStyle = createGlobalStyle`
         filter: drop-shadow(6px 16px 20px black);
     }    
 
+    body {
+        background-color: #696969
+    }
+
 `;
