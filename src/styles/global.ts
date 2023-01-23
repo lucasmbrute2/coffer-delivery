@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box
     }
 
-            
+    img {
+        filter: drop-shadow(6px 16px 20px black);
+    }    
 
 `;
