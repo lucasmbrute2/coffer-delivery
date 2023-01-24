@@ -7,15 +7,16 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box
     }
 
-    img {
-        filter: drop-shadow(6px 16px 20px black);
-    }    
-
     body {
         background-color: #696969;
         max-width: calc(100% - 20rem);
         margin: 0 auto;
     }
 
+    body, input, textarea, button {
+        font-family: 'Roboto', 'sans-serif';
+        font-weight: 400;
+        font-size: 1rem;
+    }
 
 `;
