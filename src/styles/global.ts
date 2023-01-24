@@ -12,7 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     }    
 
     body {
-        background-color: #696969
+        background-color: #696969;
+        max-width: calc(100% - 20rem);
+        margin: 0 auto;
     }
+
 
 `;
