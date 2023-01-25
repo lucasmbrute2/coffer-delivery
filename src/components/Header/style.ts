@@ -26,10 +26,6 @@ export const CurrentLocation = styled(BaseCustomerInfoHeader)`
 
     display: flex;
     align-items: center;
-
-    span {
-        margin-left: 0.5rem;
-    }
 `;
 
 export const Cart = styled(BaseCustomerInfoHeader)`

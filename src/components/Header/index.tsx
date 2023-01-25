@@ -14,7 +14,8 @@ export function Header() {
 
             <CartWrapper>
                 <CurrentLocation>
-                    <img src={pin} /> <Location></Location>
+                    <img src={pin} />
+                    <Location />
                 </CurrentLocation>
                 <Cart>
                     <img src={cart} />

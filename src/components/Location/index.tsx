@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { states } from "../../../states";
 import { api } from "./api";
+import { LocationContainer } from "./style";
 
 export function Location() {
     const [geolocation, setGeolocation] = useState({
@@ -29,10 +30,10 @@ export function Location() {
     }, [geolocation]);
 
     return (
-        <div>
+        <LocationContainer>
             {geolocation.city &&
                 geolocation.symbol &&
                 `${geolocation.city}, ${geolocation.symbol}`}
-        </div>
+        </LocationContainer>
     );
 }
