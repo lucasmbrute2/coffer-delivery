@@ -73,10 +73,33 @@ export const BenefitsIcon = styled.p<IconColorsProps>`
         theme[ICON_COLORS[iconBackGroundColor]]};
     border-radius: 50%;
 
-    width: 33px;
-    height: 33px;
+    width: 2.06rem;
+    height: 2.06rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+export const CoffeCardListSection = styled.section`
+    margin: 9.25rem 0 9.81rem 0;
+
+    > div {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        gap: 2rem;
+    }
+
+    > h2 {
+        font-family: "Baloo 2";
+        font-weight: 800;
+        font-size: 2rem;
+        line-height: 1.3;
+
+        color: ${({ theme }) => theme["gray-700"]};
+
+        margin-bottom: 3.37rem;
+    }
 `;

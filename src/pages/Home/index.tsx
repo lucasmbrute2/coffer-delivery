@@ -3,10 +3,13 @@ import {
     BenefitsIcon,
     BenefitsSectionContainer,
     BenefitsText,
+    CoffeCardListSection,
     HomeContainer,
     SummarySection,
 } from "./style";
 import coffeHome from "../../assets/Coffe/coffeHome.png";
+import { CoffeCard } from "../../components/CoffeCard";
+import expresso from "../../assets/Coffe/Expresso.svg";
 
 export function Home() {
     return (
@@ -57,6 +60,17 @@ export function Home() {
             <div>
                 <img src={coffeHome} alt="" />
             </div>
+
+            <CoffeCardListSection>
+                <h2>Nossos cafés</h2>
+                <div>
+                    <CoffeCard imgPath={expresso} />
+                    <CoffeCard imgPath={expresso} />
+                    <CoffeCard imgPath={expresso} />
+                    <CoffeCard imgPath={expresso} />
+                    <CoffeCard imgPath={expresso} />
+                </div>
+            </CoffeCardListSection>
         </HomeContainer>
     );
 }
