@@ -2,18 +2,14 @@ import { useEffect, useState } from "react";
 import { states } from "../../../states";
 import { api } from "./api";
 
-interface geolocationState {
-    city: string;
-    symbol: string;
-}
-
 export function Location() {
-    const [geolocation, setGeolocation] = useState<geolocationState>({});
+    const [geolocation, setGeolocation] = useState({
+        city: "",
+        symbol: "",
+    });
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(async ({ coords }) => {
-            console.log(coords);
-
             const {
                 address: { city, state },
             } = await api.getCityAndState(
@@ -30,13 +26,13 @@ export function Location() {
                 });
             }
         });
-    }, []);
+    }, [geolocation]);
 
     return (
         <div>
-            {geolocation.city && geolocation.symbol
-                ? `${geolocation.city}, ${geolocation.symbol}`
-                : ""}
+            {geolocation.city &&
+                geolocation.symbol &&
+                `${geolocation.city}, ${geolocation.symbol}`}
         </div>
     );
 }
