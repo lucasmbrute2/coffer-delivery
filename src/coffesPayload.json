@@ -4,7 +4,7 @@
         "name": "Expresso Tradicional",
         "labels": ["tradicional", "café com leite"],
         "description": "O tradicional café feito com água quente e grãos moídos",
-        "quantity": 3,
+        "quantity": 1,
         "price": "9,90",
         "imgSrc": "CafeComLeite"
     },
@@ -14,7 +14,7 @@
         "name": "Expresso Tradicional",
         "labels": ["tradicional"],
         "description": "O tradicional café feito com água quente e grãos moídos",
-        "quantity": 2,
+        "quantity": 1,
         "price": "9,90",
         "imgSrc": "Americano"
     }
