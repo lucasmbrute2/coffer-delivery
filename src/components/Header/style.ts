@@ -27,8 +27,3 @@ export const CurrentLocation = styled(BaseCustomerInfoHeader)`
     display: flex;
     align-items: center;
 `;
-
-export const Cart = styled(BaseCustomerInfoHeader)`
-    background-color: ${({ theme }) => theme["yellow-700"]};
-    margin-left: 0.75rem;
-`;
