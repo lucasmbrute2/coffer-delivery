@@ -102,6 +102,7 @@ export const CoffeCardQuantityWrapper = styled.div`
         padding: 0.5rem;
 
         border-radius: 6px;
+        cursor: pointer;
     }
 `;
 
@@ -117,6 +118,10 @@ export const CoffeCardQuantitySection = styled.div`
     margin-right: 0.5rem;
 
     background-color: ${({ theme }) => theme["white-300"]};
+
+    span {
+        cursor: pointer;
+    }
 `;
 
 export const Quantity = styled.p`
