@@ -9,9 +9,17 @@ import {
 } from "./style";
 import coffeHome from "../../assets/Coffe/coffeHome.png";
 import { CoffeCard } from "../../components/CoffeCard";
-import expresso from "../../assets/Coffe/Expresso.svg";
+import { useContext, useEffect } from "react";
+import coffesJSON from "../../coffesPayload.json";
+import { CoffeContext } from "../../contexts/CoffeContext";
 
 export function Home() {
+    const { coffes, setCoffes } = useContext(CoffeContext);
+
+    useEffect(() => {
+        setCoffes(JSON.parse(JSON.stringify(coffesJSON)));
+    }, []);
+
     return (
         <HomeContainer>
             <SummarySection>
@@ -64,11 +72,9 @@ export function Home() {
             <CoffeCardListSection>
                 <h2>Nossos cafés</h2>
                 <div>
-                    <CoffeCard imgPath={expresso} />
-                    <CoffeCard imgPath={expresso} />
-                    <CoffeCard imgPath={expresso} />
-                    <CoffeCard imgPath={expresso} />
-                    <CoffeCard imgPath={expresso} />
+                    {coffes.map((coffe) => (
+                        <CoffeCard key={coffe.id} coffe={coffe} />
+                    ))}
                 </div>
             </CoffeCardListSection>
         </HomeContainer>
