@@ -35,14 +35,6 @@ export const CoffeCardWrapper = styled.div`
         color: ${({ theme }) => theme["gray-400"]};
     }
 `;
-
-export const CoffeImage = styled.img`
-    margin-top: calc(-1.25rem - 20px);
-
-    width: 7.5rem;
-    height: 7.5rem;
-`;
-
 export const CoffeLabelContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
