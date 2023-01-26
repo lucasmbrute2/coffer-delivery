@@ -1,5 +1,5 @@
 import { ShoppingCart } from "phosphor-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import minusIcon from "../../assets/minus.svg";
 import plusIcon from "../../assets/plus.svg";
 import { Coffe, CoffeContext } from "../../contexts/CoffeContext";
@@ -20,36 +20,44 @@ interface CoffeCardProps {
 }
 
 export function CoffeCard({ coffe }: CoffeCardProps) {
-    const { coffes, setCoffes, setCart } = useContext(CoffeContext);
-    const { imgSrc, quantity, price, labels, description, name, id } = coffe;
-    const activeCoffe = coffes.find((accCoffe) => accCoffe.id === id);
+    const { coffes, setCart } = useContext(CoffeContext);
+    const { imgSrc, price, labels, description, name, id } = coffe;
 
-    //improve that
+    const activeCoffe = coffes.find((accCoffe) => accCoffe.id === id);
+    const [productQuantity, setProductQuantity] = useState(1);
+
     function handleMinusQuantity() {
-        setCoffes((prev) => {
-            return prev.map((co) => {
-                if (co === coffe && co.quantity > 1) {
-                    co.quantity -= 1;
-                }
-                return co;
-            });
+        setProductQuantity((prev) => {
+            if (prev <= 1) return prev;
+            return (prev -= 1);
         });
     }
 
     function handlePlusQuantity() {
-        setCoffes((prev) => {
-            return prev.map((co) => {
-                if (co === coffe) {
-                    co.quantity += 1;
-                }
-                return co;
-            });
-        });
+        setProductQuantity((prev) => (prev += 1));
     }
 
+    //useReduce
     function handleAddToCart() {
         if (!activeCoffe) return;
-        setCart((prev) => [...prev, activeCoffe]);
+        setCart((prev) => {
+            const coffeAlreadyInCartIndex = prev.findIndex(
+                (coffe) => coffe.id === activeCoffe.id
+            );
+
+            if (coffeAlreadyInCartIndex != -1) {
+                return prev.map((cart, index) => {
+                    if (index === coffeAlreadyInCartIndex) {
+                        cart.quantity += productQuantity;
+                    }
+                    return cart;
+                });
+            }
+
+            return [...prev, { ...activeCoffe, quantity: productQuantity }];
+        });
+
+        setProductQuantity(1);
     }
 
     return (
@@ -67,7 +75,12 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
             <CoffeCardPriceWrapper>
                 <CoffeCardPriceSection>
                     <p>R$</p>
-                    <p>{price}</p>
+                    <p>
+                        {(
+                            parseFloat(price.replace(",", ".")) *
+                            productQuantity
+                        ).toFixed(2)}
+                    </p>
                 </CoffeCardPriceSection>
 
                 <CoffeCardQuantityWrapper>
@@ -75,7 +88,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
                         <span onClick={handleMinusQuantity}>
                             <img src={minusIcon} alt="" />
                         </span>
-                        <Quantity>{quantity}</Quantity>
+                        <Quantity>{productQuantity}</Quantity>
                         <span onClick={handlePlusQuantity}>
                             <img src={plusIcon} alt="" />
                         </span>
