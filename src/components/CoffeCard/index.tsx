@@ -20,8 +20,9 @@ interface CoffeCardProps {
 }
 
 export function CoffeCard({ coffe }: CoffeCardProps) {
-    const { coffes, setCoffes } = useContext(CoffeContext);
-    const { imgSrc, quantity, price, labels, description, name } = coffe;
+    const { coffes, setCoffes, setCart } = useContext(CoffeContext);
+    const { imgSrc, quantity, price, labels, description, name, id } = coffe;
+    const activeCoffe = coffes.find((accCoffe) => accCoffe.id === id);
 
     //improve that
     function handleMinusQuantity() {
@@ -45,12 +46,18 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
             });
         });
     }
+
+    function handleAddToCart() {
+        if (!activeCoffe) return;
+        setCart((prev) => [...prev, activeCoffe]);
+    }
+
     return (
         <CoffeCardWrapper>
             <SvgImport svgName={imgSrc} />
             <CoffeLabelContainer>
                 {labels.map((label) => (
-                    <CoffeLabel>{label}</CoffeLabel>
+                    <CoffeLabel key={label}>{label}</CoffeLabel>
                 ))}
             </CoffeLabelContainer>
 
@@ -73,7 +80,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
                             <img src={plusIcon} alt="" />
                         </span>
                     </CoffeCardQuantitySection>
-                    <p>
+                    <p onClick={handleAddToCart}>
                         <ShoppingCart size={22} weight="fill" color="white" />
                     </p>
                 </CoffeCardQuantityWrapper>

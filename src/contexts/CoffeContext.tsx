@@ -14,6 +14,8 @@ export interface Coffe {
 interface CoffeContextData {
     coffes: Coffe[];
     setCoffes: React.Dispatch<React.SetStateAction<Coffe[]>>;
+    cart: Coffe[];
+    setCart: React.Dispatch<React.SetStateAction<Coffe[]>>;
 }
 
 export const CoffeContext = createContext({} as CoffeContextData);
@@ -24,9 +26,10 @@ interface CoffeProviderrProps {
 
 export function CoffeProvider({ children }: CoffeProviderrProps) {
     const [coffes, setCoffes] = useState<Coffe[]>([]);
+    const [cart, setCart] = useState<Coffe[]>([]);
 
     return (
-        <CoffeContext.Provider value={{ coffes, setCoffes }}>
+        <CoffeContext.Provider value={{ coffes, setCoffes, cart, setCart }}>
             {children}
         </CoffeContext.Provider>
     );
