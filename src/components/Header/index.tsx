@@ -4,20 +4,23 @@ import pin from "../../assets/pin.svg";
 
 import { Location } from "../Location";
 import { MiniCart } from "../MiniCart";
+import { Link } from "react-router-dom";
 
 export function Header() {
     return (
         <HeaderContainer>
-            <div>
+            <Link to={"/"}>
                 <img src={CoffeDeliveryLogo} />
-            </div>
+            </Link>
 
             <CartWrapper>
                 <CurrentLocation>
                     <img src={pin} />
                     <Location />
                 </CurrentLocation>
-                <MiniCart />
+                <Link to={"/checkout"}>
+                    <MiniCart />
+                </Link>
             </CartWrapper>
         </HeaderContainer>
     );
