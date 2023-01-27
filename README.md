@@ -1,4 +1,4 @@
-# coffer-delivery
+# Coffe Delivery
 Nós somos um e-commmerce, mas não vendemos de verdade :(
 
 A graça aqui é apenas estudar um pouquinho de React.TS
