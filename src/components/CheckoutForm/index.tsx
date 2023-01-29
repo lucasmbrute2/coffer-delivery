@@ -1,4 +1,5 @@
 import { MapPinLine } from "phosphor-react";
+import { useState } from "react";
 import {
     HeaderContainerTitle,
     HeaderFormWrapper,
@@ -10,6 +11,25 @@ import {
 } from "./style";
 
 export function CheckoutForm() {
+    const [address, setAddress] = useState({
+        bairro: "",
+        cep: "",
+        complemento: "",
+        ddd: "",
+        gia: "",
+        ibge: "",
+        localidade: "",
+        logradouro: "",
+        siafi: "",
+        uf: "",
+    });
+
+    async function handleGetAddress(cep: string) {
+        const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const payload = await res.json();
+        setAddress(payload);
+    }
+
     return (
         <>
             <ShippingInformationTitle>
@@ -34,6 +54,7 @@ export function CheckoutForm() {
                             type="text"
                             placeholder="CEP"
                             inputWidth={"30"}
+                            onBlur={(e) => handleGetAddress(e.target.value)}
                         />
                     </div>
                     <div>
@@ -42,6 +63,7 @@ export function CheckoutForm() {
                             type="text"
                             placeholder="Rua"
                             inputWidth={"100"}
+                            value={address.logradouro}
                         />
                     </div>
 
@@ -67,15 +89,27 @@ export function CheckoutForm() {
                     <InputInSameRowWrapper>
                         <div>
                             <label htmlFor=""></label>
-                            <InputField type="text" placeholder="Bairro" />
+                            <InputField
+                                type="text"
+                                placeholder="Bairro"
+                                value={address.bairro}
+                            />
                         </div>
                         <div>
                             <label htmlFor=""></label>
-                            <InputField type="text" placeholder="Cidade" />
+                            <InputField
+                                type="text"
+                                placeholder="Cidade"
+                                value={address.localidade}
+                            />
                         </div>
                         <div>
                             <label htmlFor=""></label>
-                            <InputField type="text" placeholder="UF" />
+                            <InputField
+                                type="text"
+                                placeholder="UF"
+                                value={address.uf}
+                            />
                         </div>
                     </InputInSameRowWrapper>
                 </InputFormSection>
