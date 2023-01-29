@@ -1,79 +1,20 @@
-import {
-    Bank,
-    CreditCard,
-    CurrencyDollar,
-    MapPinLine,
-    Money,
-} from "phosphor-react";
-import { useContext } from "react";
-import { ProductLineItem } from "../../components/ProductLineItem";
+import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
+import { CheckoutForm } from "../../components/CheckoutForm";
 import { Summary } from "../../components/Summary";
-import { CoffeContext } from "../../contexts/CoffeContext";
 import {
     BillingSectionHeader,
     BillingSectionHeaderTitle,
     BillingSectionWrapper,
     CheckoutContainer,
-    HeaderContainerTitle,
-    HeaderFormWrapper,
-    InputFormSection,
     PaymentInstrumentSection,
     PaymentInstrumentWrapper,
-    ShippingInformartionForm,
-    ShippingInformationTitle,
 } from "./style";
 
 export function Checkout() {
     return (
         <CheckoutContainer>
             <div>
-                <ShippingInformationTitle>
-                    Complete seu pedido
-                </ShippingInformationTitle>
-                <ShippingInformartionForm>
-                    <HeaderFormWrapper>
-                        <span>
-                            <MapPinLine size={22} color="#C47F17" />
-                        </span>
-                        <HeaderContainerTitle>
-                            <p>Endereço de entrega</p>
-                            <span>
-                                Informe o endereço de onde deseja receber seu
-                                pedido
-                            </span>
-                        </HeaderContainerTitle>
-                    </HeaderFormWrapper>
-                    <InputFormSection>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" placeholder="CEP" />
-                        </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" placeholder="Rua" />
-                        </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" placeholder="Número" />
-                        </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" placeholder="Complemento" />
-                        </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" placeholder="Bairro" />
-                        </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" placeholder="Cidade" />
-                        </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" placeholder="UF" />
-                        </div>
-                    </InputFormSection>
-                </ShippingInformartionForm>
+                <CheckoutForm />
                 <BillingSectionWrapper>
                     <BillingSectionHeader>
                         <span>
