@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
-export const CoffeImage = styled.img`
-    margin-top: calc(-1.25rem - 20px);
+interface CoffeImageProps {
+    customWidth: string;
+    customHeight: string;
+    customMargin: string;
+}
 
-    width: 7.5rem;
-    height: 7.5rem;
+export const CoffeImage = styled.img<CoffeImageProps>`
+    margin-top: ${({ customMargin }) => customMargin};
+
+    width: ${({ customWidth }) => customWidth};
+    height: ${({ customHeight }) => customHeight};
 `;

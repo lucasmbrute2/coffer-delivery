@@ -35,8 +35,18 @@ export type svgKeyName = keyof typeof activeSvg;
 
 interface SvgImportProps {
     svgName: svgKeyName;
+    width: string;
+    height: string;
+    margin: string;
 }
 
-export function SvgImport({ svgName }: SvgImportProps) {
-    return <CoffeImage src={activeSvg[svgName]} />;
+export function SvgImport({ svgName, height, width, margin }: SvgImportProps) {
+    return (
+        <CoffeImage
+            src={activeSvg[svgName]}
+            customWidth={width}
+            customHeight={height}
+            customMargin={margin}
+        />
+    );
 }

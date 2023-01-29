@@ -62,7 +62,12 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
 
     return (
         <CoffeCardWrapper>
-            <SvgImport svgName={imgSrc} />
+            <SvgImport
+                height="7.5rem"
+                width="7.5rem"
+                margin="calc(-1.25rem - 20px)"
+                svgName={imgSrc}
+            />
             <CoffeLabelContainer>
                 {labels.map((label) => (
                     <CoffeLabel key={label}>{label}</CoffeLabel>

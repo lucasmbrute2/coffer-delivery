@@ -11,10 +11,11 @@ export interface Coffe {
     price: string;
 }
 
-interface CoffeIntoCart {
+export interface CoffeIntoCart {
     id: string;
     quantity: number;
     name: string;
+    imgSrc: svgKeyName;
 }
 
 interface CoffeContextData {
