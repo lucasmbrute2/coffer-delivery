@@ -20,7 +20,6 @@ const ShippingInformationTitleBase = styled.h2`
 `;
 
 export const ShippingInformationTitle = styled(ShippingInformationTitleBase)``;
-export const CartInformationTitle = styled(ShippingInformationTitleBase)``;
 
 export const ShippingInformartionForm = styled.form`
     background-color: ${({ theme }) => theme["white-100"]};

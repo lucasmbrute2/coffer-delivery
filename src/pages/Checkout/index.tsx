@@ -7,12 +7,12 @@ import {
 } from "phosphor-react";
 import { useContext } from "react";
 import { ProductLineItem } from "../../components/ProductLineItem";
+import { Summary } from "../../components/Summary";
 import { CoffeContext } from "../../contexts/CoffeContext";
 import {
     BillingSectionHeader,
     BillingSectionHeaderTitle,
     BillingSectionWrapper,
-    CartInformationTitle,
     CheckoutContainer,
     HeaderContainerTitle,
     HeaderFormWrapper,
@@ -24,8 +24,6 @@ import {
 } from "./style";
 
 export function Checkout() {
-    const { cart } = useContext(CoffeContext);
-
     return (
         <CheckoutContainer>
             <div>
@@ -111,29 +109,7 @@ export function Checkout() {
                     </PaymentInstrumentSection>
                 </BillingSectionWrapper>
             </div>
-            <div>
-                <CartInformationTitle>Cafés selecionados</CartInformationTitle>
-                {cart.map((item) => (
-                    <div>
-                        <ProductLineItem pli={item} />
-                    </div>
-                ))}
-
-                <div>
-                    <p>total de itens</p>
-                    <p>RS29,79</p>
-                </div>
-                <div>
-                    <p>Entrega</p>
-                    <p>RS3,50</p>
-                </div>
-                <div>
-                    <p>TOTAL</p>
-                    <p>RS33,20</p>
-                </div>
-
-                <button>Confirmar pedido</button>
-            </div>
+            <Summary />
         </CheckoutContainer>
     );
 }
