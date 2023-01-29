@@ -36,7 +36,14 @@ export function CoffeProvider({ children }: CoffeProviderrProps) {
     const [cart, setCart] = useState<CoffeIntoCart[]>([]);
 
     return (
-        <CoffeContext.Provider value={{ coffes, setCoffes, cart, setCart }}>
+        <CoffeContext.Provider
+            value={{
+                coffes,
+                setCoffes,
+                cart,
+                setCart,
+            }}
+        >
             {children}
         </CoffeContext.Provider>
     );
