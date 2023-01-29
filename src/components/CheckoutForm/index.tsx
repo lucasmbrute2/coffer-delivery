@@ -2,7 +2,9 @@ import { MapPinLine } from "phosphor-react";
 import {
     HeaderContainerTitle,
     HeaderFormWrapper,
+    InputField,
     InputFormSection,
+    InputInSameRowWrapper,
     ShippingInformartionForm,
     ShippingInformationTitle,
 } from "./style";
@@ -28,32 +30,54 @@ export function CheckoutForm() {
                 <InputFormSection>
                     <div>
                         <label htmlFor=""></label>
-                        <input type="text" placeholder="CEP" />
+                        <InputField
+                            type="text"
+                            placeholder="CEP"
+                            inputWidth={"30"}
+                        />
                     </div>
                     <div>
                         <label htmlFor=""></label>
-                        <input type="text" placeholder="Rua" />
+                        <InputField
+                            type="text"
+                            placeholder="Rua"
+                            inputWidth={"100"}
+                        />
                     </div>
-                    <div>
-                        <label htmlFor=""></label>
-                        <input type="text" placeholder="Número" />
-                    </div>
-                    <div>
-                        <label htmlFor=""></label>
-                        <input type="text" placeholder="Complemento" />
-                    </div>
-                    <div>
-                        <label htmlFor=""></label>
-                        <input type="text" placeholder="Bairro" />
-                    </div>
-                    <div>
-                        <label htmlFor=""></label>
-                        <input type="text" placeholder="Cidade" />
-                    </div>
-                    <div>
-                        <label htmlFor=""></label>
-                        <input type="text" placeholder="UF" />
-                    </div>
+
+                    <InputInSameRowWrapper>
+                        <div>
+                            <label htmlFor=""></label>
+                            <InputField
+                                type="text"
+                                placeholder="Número"
+                                inputWidth={"100"}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor=""></label>
+                            <InputField
+                                type="text"
+                                placeholder="Complemento"
+                                inputWidth={"100"}
+                            />
+                        </div>
+                    </InputInSameRowWrapper>
+
+                    <InputInSameRowWrapper>
+                        <div>
+                            <label htmlFor=""></label>
+                            <InputField type="text" placeholder="Bairro" />
+                        </div>
+                        <div>
+                            <label htmlFor=""></label>
+                            <InputField type="text" placeholder="Cidade" />
+                        </div>
+                        <div>
+                            <label htmlFor=""></label>
+                            <InputField type="text" placeholder="UF" />
+                        </div>
+                    </InputInSameRowWrapper>
                 </InputFormSection>
             </ShippingInformartionForm>
         </>

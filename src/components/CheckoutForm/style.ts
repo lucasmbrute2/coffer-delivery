@@ -16,7 +16,6 @@ export const ShippingInformationTitle = styled(ShippingInformationTitleBase)``;
 export const ShippingInformartionForm = styled.form`
     background-color: ${({ theme }) => theme["white-100"]};
     border-radius: 6px;
-
     padding: 1.5rem 2.5rem 2.5rem 2.5rem;
 `;
 
@@ -54,23 +53,38 @@ export const InputFormSection = styled.section`
     display: flex;
     flex-direction: column;
 
-    input {
-        background: ${({ theme }) => theme["white-200"]};
-        border: 1px solid #e6e5e5;
-        border-radius: 4px;
-
-        height: 2.625rem;
-
-        font-family: "Roboto";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 0.875rem;
-        line-height: 1.3;
-
-        color: ${({ theme }) => theme["gray-600"]};
-
-        padding: 0.5rem;
-
-        outline: none;
+    div {
+        gap: 0.75rem;
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
     }
+`;
+
+export const InputInSameRowWrapper = styled.div`
+    display: flex;
+    width: 100%;
+`;
+
+interface InputFieldProps {
+    inputWidth?: string;
+}
+
+export const InputField = styled.input<InputFieldProps>`
+    background: ${({ theme }) => theme["white-200"]};
+    border: 1px solid #e6e5e5;
+    border-radius: 4px;
+
+    height: 2.625rem;
+
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.3;
+
+    color: ${({ theme }) => theme["gray-600"]};
+    padding: 0.5rem;
+    outline: none;
+    ${(props) => (props.inputWidth ? `width: ${props.inputWidth}%` : "")}
 `;
