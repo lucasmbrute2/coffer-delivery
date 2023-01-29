@@ -1,89 +1,123 @@
+import {
+    Bank,
+    CreditCard,
+    CurrencyDollar,
+    MapPinLine,
+    Money,
+} from "phosphor-react";
+import { useContext } from "react";
+import { ProductLineItem } from "../../components/ProductLineItem";
+import { CoffeContext } from "../../contexts/CoffeContext";
+import {
+    BillingSectionHeader,
+    BillingSectionHeaderTitle,
+    BillingSectionWrapper,
+    CartInformationTitle,
+    CheckoutContainer,
+    HeaderContainerTitle,
+    HeaderFormWrapper,
+    InputFormSection,
+    PaymentInstrumentSection,
+    PaymentInstrumentWrapper,
+    ShippingInformartionForm,
+    ShippingInformationTitle,
+} from "./style";
+
 export function Checkout() {
+    const { cart } = useContext(CoffeContext);
+
     return (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <CheckoutContainer>
             <div>
-                <h2>Complete seu pedido</h2>
-                <form>
-                    <div>
-                        <span></span>
-                        <div>
+                <ShippingInformationTitle>
+                    Complete seu pedido
+                </ShippingInformationTitle>
+                <ShippingInformartionForm>
+                    <HeaderFormWrapper>
+                        <span>
+                            <MapPinLine size={22} color="#C47F17" />
+                        </span>
+                        <HeaderContainerTitle>
                             <p>Endereço de entrega</p>
                             <span>
                                 Informe o endereço de onde deseja receber seu
                                 pedido
                             </span>
-                        </div>
-                    </div>
-                    {/*info section*/}
-                    <div>
+                        </HeaderContainerTitle>
+                    </HeaderFormWrapper>
+                    <InputFormSection>
                         <div>
                             <label htmlFor=""></label>
-                            <input type="text" />
-                        </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <input type="text" />
+                            <input type="text" placeholder="CEP" />
                         </div>
                         <div>
                             <label htmlFor=""></label>
-                            <input type="text" />
+                            <input type="text" placeholder="Rua" />
                         </div>
                         <div>
                             <label htmlFor=""></label>
-                            <input type="text" />
+                            <input type="text" placeholder="Número" />
                         </div>
                         <div>
                             <label htmlFor=""></label>
-                            <input type="text" />
+                            <input type="text" placeholder="Complemento" />
                         </div>
                         <div>
                             <label htmlFor=""></label>
-                            <input type="text" />
+                            <input type="text" placeholder="Bairro" />
                         </div>
                         <div>
                             <label htmlFor=""></label>
-                            <input type="text" />
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <span></span>
-                            <div>
-                                <p>Pagamento</p>
-                                <span>
-                                    O pagamento é feito na entrega. Escolha a
-                                    forma que deseja pagar
-                                </span>
-                            </div>
+                            <input type="text" placeholder="Cidade" />
                         </div>
                         <div>
-                            <span>card</span>
+                            <label htmlFor=""></label>
+                            <input type="text" placeholder="UF" />
+                        </div>
+                    </InputFormSection>
+                </ShippingInformartionForm>
+                <BillingSectionWrapper>
+                    <BillingSectionHeader>
+                        <span>
+                            <CurrencyDollar size={22} color="#8047F8" />
+                        </span>
+                        <BillingSectionHeaderTitle>
+                            <p>Pagamento</p>
+                            <span>
+                                O pagamento é feito na entrega. Escolha a forma
+                                que deseja pagar
+                            </span>
+                        </BillingSectionHeaderTitle>
+                    </BillingSectionHeader>
+                    <PaymentInstrumentSection>
+                        <PaymentInstrumentWrapper>
+                            <span>
+                                <CreditCard size={18} color="#8047F8" />
+                            </span>
                             <p>cartão de crédito</p>
-                        </div>
-                        <div>
-                            <span>card</span>
+                        </PaymentInstrumentWrapper>
+                        <PaymentInstrumentWrapper>
+                            <span>
+                                <Bank size={18} color="#8047F8" />
+                            </span>
                             <p>cartão de débito</p>
-                        </div>
-                        <div>
-                            <span>money</span>
+                        </PaymentInstrumentWrapper>
+                        <PaymentInstrumentWrapper>
+                            <span>
+                                <Money size={18} color="#8047F8" />
+                            </span>
                             <p>dinheiro</p>
-                        </div>
-                    </div>
-                </form>
+                        </PaymentInstrumentWrapper>
+                    </PaymentInstrumentSection>
+                </BillingSectionWrapper>
             </div>
             <div>
-                <div>
-                    <img src="" alt="" />
+                <CartInformationTitle>Cafés selecionados</CartInformationTitle>
+                {cart.map((item) => (
                     <div>
-                        <p>Expresso tradicional</p>
-                        <div>
-                            <input type="number" />
-                            remover
-                        </div>
-                        R$9,90
+                        <ProductLineItem pli={item} />
                     </div>
-                </div>
+                ))}
 
                 <div>
                     <p>total de itens</p>
@@ -100,6 +134,6 @@ export function Checkout() {
 
                 <button>Confirmar pedido</button>
             </div>
-        </div>
+        </CheckoutContainer>
     );
 }
