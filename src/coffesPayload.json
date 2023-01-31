@@ -5,7 +5,7 @@
         "labels": ["tradicional", "café com leite"],
         "description": "O tradicional café feito com água quente e grãos moídos",
         "quantity": 1,
-        "price": "9,90",
+        "price": 9.9,
         "imgSrc": "CafeComLeite"
     },
 
@@ -15,7 +15,7 @@
         "labels": ["tradicional"],
         "description": "O tradicional café feito com água quente e grãos moídos",
         "quantity": 1,
-        "price": "9,90",
+        "price": 9.9,
         "imgSrc": "Americano"
     }
 ]

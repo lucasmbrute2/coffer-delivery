@@ -5,19 +5,53 @@ import {
     ItemPrice,
     ItemSummary,
 } from "./style";
-import { CoffeIntoCart } from "../../contexts/CoffeContext";
+import { CoffeContext, CoffeIntoCart } from "../../contexts/CoffeContext";
 import { SvgImport } from "../SvgImport";
 import minusIcon from "../../assets/minus.svg";
 import plusIcon from "../../assets/plus.svg";
 import { Trash } from "phosphor-react";
+import { useContext } from "react";
 
 interface ProductLineItemProps {
     pli: CoffeIntoCart;
 }
 
 export function ProductLineItem({
-    pli: { id, name, quantity, imgSrc },
+    pli: { id, name, quantity, imgSrc, price },
 }: ProductLineItemProps) {
+    const { setCart } = useContext(CoffeContext);
+
+    function handlePlusQuantity() {
+        setCart((prev) => {
+            const newArr = prev.map((i) => {
+                if (i.id !== id) return i;
+
+                i.quantity += 1;
+                return i;
+            });
+
+            return newArr;
+        });
+    }
+
+    function handleMinusQuantity() {
+        if (quantity <= 1) {
+            alert("Não é possível ter menos que 1 produto no carrinho.");
+            return;
+        }
+
+        setCart((prev) => {
+            const newArr = prev.map((i) => {
+                if (i.id !== id) return i;
+
+                i.quantity--;
+                return i;
+            });
+
+            return newArr;
+        });
+    }
+
     return (
         <Container>
             <SvgImport
@@ -30,11 +64,11 @@ export function ProductLineItem({
                 <p>Expresso tradicional</p>
                 <ItemContainer>
                     <div>
-                        <span>
+                        <span onClick={handleMinusQuantity}>
                             <img src={minusIcon} alt="" />
                         </span>
-                        <p>1</p>
-                        <span>
+                        <p>{quantity}</p>
+                        <span onClick={handlePlusQuantity}>
                             <img src={plusIcon} alt="" />
                         </span>
                     </div>
@@ -47,7 +81,7 @@ export function ProductLineItem({
                     </DeleteItemWrapper>
                 </ItemContainer>
             </ItemSummary>
-            <ItemPrice>R$9,90</ItemPrice>
+            <ItemPrice>R$ {(price * quantity).toFixed(2)}</ItemPrice>
         </Container>
     );
 }

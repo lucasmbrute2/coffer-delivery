@@ -80,12 +80,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
             <CoffeCardPriceWrapper>
                 <CoffeCardPriceSection>
                     <p>R$</p>
-                    <p>
-                        {(
-                            parseFloat(price.replace(",", ".")) *
-                            productQuantity
-                        ).toFixed(2)}
-                    </p>
+                    <p>{(price * productQuantity).toFixed(2)}</p>
                 </CoffeCardPriceSection>
 
                 <CoffeCardQuantityWrapper>

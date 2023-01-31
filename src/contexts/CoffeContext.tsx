@@ -8,7 +8,7 @@ export interface Coffe {
     labels: string[];
     description: string;
     quantity: number;
-    price: string;
+    price: number;
 }
 
 export interface CoffeIntoCart {
@@ -16,6 +16,7 @@ export interface CoffeIntoCart {
     quantity: number;
     name: string;
     imgSrc: svgKeyName;
+    price: number;
 }
 
 interface CoffeContextData {

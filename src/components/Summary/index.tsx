@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CoffeContext } from "../../contexts/CoffeContext";
 import { ProductLineItem } from "../ProductLineItem";
 import {
@@ -15,6 +15,19 @@ import {
 
 export function Summary() {
     const { cart } = useContext(CoffeContext);
+    const [totalItems, setTotalItems] = useState(0);
+    console.log("chamou");
+
+    useEffect(() => {
+        console.log("chamou useEffect");
+        const total = cart.reduce((acc, curr) => {
+            const a = acc + curr.price * curr.quantity;
+            console.log(a);
+            return a;
+        }, 0);
+
+        setTotalItems(total);
+    }, [cart]);
 
     return (
         <div>
@@ -29,7 +42,7 @@ export function Summary() {
                 <PaymentDetailSectionWrapper>
                     <PaymentDetailSection>
                         <LabelPrice>Total de itens</LabelPrice>
-                        <EachPrice>R$ 29,79</EachPrice>
+                        <EachPrice>R$ {totalItems.toFixed(2)}</EachPrice>
                     </PaymentDetailSection>
                     <PaymentDetailSection>
                         <LabelPrice>Entrega</LabelPrice>
@@ -37,7 +50,9 @@ export function Summary() {
                     </PaymentDetailSection>
                     <PaymentDetailSection>
                         <TotalPriceLabel>TOTAL</TotalPriceLabel>
-                        <TotalPriceValue>R$ 33,20</TotalPriceValue>
+                        <TotalPriceValue>
+                            R$ {(totalItems + 3.5).toFixed(2)}
+                        </TotalPriceValue>
                     </PaymentDetailSection>
                 </PaymentDetailSectionWrapper>
 
