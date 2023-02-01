@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { DefaultLayout } from "./layouts/defaultLayout";
 import { Checkout } from "./pages/Checkout";
+import { CheckoutConfirmation } from "./pages/CheckoutConfirmation";
 import { Home } from "./pages/Home";
 
 export function Router() {
@@ -9,6 +10,10 @@ export function Router() {
             <Route path="/" element={<DefaultLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/checkout" element={<Checkout />} />
+                <Route
+                    path="/confirmation"
+                    element={<CheckoutConfirmation />}
+                />
             </Route>
         </Routes>
     );

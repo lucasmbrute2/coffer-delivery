@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { CoffeContext } from "../../contexts/CoffeContext";
 import { ProductLineItem } from "../ProductLineItem";
 import {
@@ -56,7 +57,9 @@ export function Summary() {
                     </PaymentDetailSection>
                 </PaymentDetailSectionWrapper>
 
-                <SubmitButton>Confirmar pedido</SubmitButton>
+                <Link to={"/confirmation"}>
+                    <SubmitButton>Confirmar pedido</SubmitButton>
+                </Link>
             </SummaryContainer>
         </div>
     );
