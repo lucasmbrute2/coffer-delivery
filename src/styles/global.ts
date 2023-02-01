@@ -7,6 +7,11 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box
     }
 
+    :focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px ${({ theme }) => theme["purple-100"]}
+    }
+
     body {
         background-color: ${({ theme }) => theme["white-background"]};
         max-width: calc(100% - 20rem);
@@ -16,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     body, input, textarea, button {
         font-family: 'Roboto', 'sans-serif';
         font-weight: 400;
-        font-size: 1rem;
+        font-size: 1rem;        
     }
 
 `;

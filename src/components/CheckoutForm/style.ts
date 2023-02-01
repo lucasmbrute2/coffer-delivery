@@ -85,6 +85,5 @@ export const InputField = styled.input<InputFieldProps>`
 
     color: ${({ theme }) => theme["gray-600"]};
     padding: 0.5rem;
-    outline: none;
     ${(props) => (props.inputWidth ? `width: ${props.inputWidth}%` : "")}
 `;
