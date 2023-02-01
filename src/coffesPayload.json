@@ -10,7 +10,52 @@
     },
 
     {
-        "id": "2",
+        "id": "3",
+        "name": "Havaiano",
+        "labels": ["tradicional"],
+        "description": "O tradicional café feito com água quente e grãos moídos",
+        "quantity": 1,
+        "price": 9.9,
+        "imgSrc": "Havaiano"
+    },
+    {
+        "id": "4",
+        "name": "Arabe",
+        "labels": ["tradicional"],
+        "description": "O tradicional café feito com água quente e grãos moídos",
+        "quantity": 1,
+        "price": 9.9,
+        "imgSrc": "Arabe"
+    },
+    {
+        "id": "5",
+        "name": "Capuccino",
+        "labels": ["tradicional"],
+        "description": "O tradicional café feito com água quente e grãos moídos",
+        "quantity": 1,
+        "price": 9.9,
+        "imgSrc": "Capuccino"
+    },
+    {
+        "id": "6",
+        "name": "Chocolate Quente",
+        "labels": ["tradicional"],
+        "description": "O tradicional café feito com água quente e grãos moídos",
+        "quantity": 1,
+        "price": 9.9,
+        "imgSrc": "ChocolateQuente"
+    },
+    {
+        "id": "7",
+        "name": "Irlandes",
+        "labels": ["tradicional"],
+        "description": "O tradicional café feito com água quente e grãos moídos",
+        "quantity": 1,
+        "price": 9.9,
+        "imgSrc": "Irlandes"
+    },
+    {
+        "id": "8",
         "name": "Expresso Tradicional",
         "labels": ["tradicional"],
         "description": "O tradicional café feito com água quente e grãos moídos",
