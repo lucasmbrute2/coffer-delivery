@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     position: relative;
-
-    /* justify-content: space-between; */
 
     border-bottom: 1px solid ${({ theme }) => theme["white-300"]};
 
@@ -15,9 +14,6 @@ export const Container = styled.div`
 `;
 
 export const ItemSummary = styled.div`
-    margin-left: 1.25rem;
-    margin-right: 3.125rem;
-
     > p {
         font-family: "Roboto";
         font-style: normal;
@@ -95,4 +91,7 @@ export const ItemPrice = styled.p`
     color: ${({ theme }) => theme["gray-600"]};
 
     margin-top: -2rem;
+    width: 75px;
+
+    text-align: center;
 `;
