@@ -6,7 +6,7 @@ interface cityAndStateReturn {
 }
 
 export const api = {
-    baseUrl: "http://nominatim.openstreetmap.org/reverse",
+    baseUrl: "https://nominatim.openstreetmap.org/reverse",
 
     async getCityAndState(
         lat: string,
