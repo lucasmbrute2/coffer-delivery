@@ -1,5 +1,7 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { useContext } from "react";
 import deliveryImage from "../../assets/delivery.png";
+import { CoffeContext } from "../../contexts/CoffeContext";
 import {
     CheckoutConfirmationContainer,
     CheckoutDetailsWrapper,
@@ -7,6 +9,8 @@ import {
 } from "./style";
 
 export function CheckoutConfirmation() {
+    const { selectedPaymentMethod, address } = useContext(CoffeContext);
+
     return (
         <CheckoutConfirmationContainer>
             <h2>Uhu! Pedido confirmado</h2>
@@ -20,10 +24,13 @@ export function CheckoutConfirmation() {
                         </span>
                         <div>
                             <p>
-                                Entrega em{" "}
-                                <b>Rua João Daniel Martinelli, 102</b>
+                                Entrega em{"  "}
+                                <b>{address.logradouro}</b>
                             </p>
-                            <span>Farrapos - Porto Alegre, RS</span>
+                            <span>
+                                {address.bairro} {address.localidade},{" "}
+                                {address.uf}
+                            </span>
                         </div>
                     </CheckoutDetailsWrapper>
                     <CheckoutDetailsWrapper backgroundColorIcon="yellowLight">
@@ -45,7 +52,7 @@ export function CheckoutConfirmation() {
                         </span>
                         <div>
                             <p>Pagamento na entrega</p>
-                            <b>Cartão de Crédito</b>
+                            <b>{selectedPaymentMethod}</b>
                         </div>
                     </CheckoutDetailsWrapper>
                 </div>

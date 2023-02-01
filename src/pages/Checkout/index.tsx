@@ -1,6 +1,8 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
+import { useContext } from "react";
 import { CheckoutForm } from "../../components/CheckoutForm";
 import { Summary } from "../../components/Summary";
+import { CoffeContext } from "../../contexts/CoffeContext";
 import {
     BillingSectionHeader,
     BillingSectionHeaderTitle,
@@ -11,6 +13,14 @@ import {
 } from "./style";
 
 export function Checkout() {
+    const { setSelectedPaymentMehthod } = useContext(CoffeContext);
+
+    function handleSetPaymentMethod(paymentMethod: string) {
+        if (!paymentMethod) return;
+
+        setSelectedPaymentMehthod(paymentMethod);
+    }
+
     return (
         <CheckoutContainer>
             <div>
@@ -29,19 +39,30 @@ export function Checkout() {
                         </BillingSectionHeaderTitle>
                     </BillingSectionHeader>
                     <PaymentInstrumentSection>
-                        <PaymentInstrumentWrapper>
+                        <PaymentInstrumentWrapper
+                            name="Cartão de crédito"
+                            onClick={(e) =>
+                                handleSetPaymentMethod("Cartão de crédito")
+                            }
+                        >
                             <span>
                                 <CreditCard size={18} color="#8047F8" />
                             </span>
                             <p>cartão de crédito</p>
                         </PaymentInstrumentWrapper>
-                        <PaymentInstrumentWrapper>
+                        <PaymentInstrumentWrapper
+                            onClick={(e) =>
+                                handleSetPaymentMethod("Cartão de Débito")
+                            }
+                        >
                             <span>
                                 <Bank size={18} color="#8047F8" />
                             </span>
                             <p>cartão de débito</p>
                         </PaymentInstrumentWrapper>
-                        <PaymentInstrumentWrapper>
+                        <PaymentInstrumentWrapper
+                            onClick={(e) => handleSetPaymentMethod("Dinheiro")}
+                        >
                             <span>
                                 <Money size={18} color="#8047F8" />
                             </span>

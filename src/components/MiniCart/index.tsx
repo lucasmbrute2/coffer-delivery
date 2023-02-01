@@ -10,8 +10,6 @@ export function MiniCart() {
         0
     );
 
-    console.log({ cart });
-
     return (
         <Cart>
             <img src={miniCart} alt="" />

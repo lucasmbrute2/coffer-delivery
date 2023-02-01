@@ -1,5 +1,6 @@
 import { MapPinLine } from "phosphor-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CoffeContext } from "../../contexts/CoffeContext";
 import {
     HeaderContainerTitle,
     HeaderFormWrapper,
@@ -11,18 +12,7 @@ import {
 } from "./style";
 
 export function CheckoutForm() {
-    const [address, setAddress] = useState({
-        bairro: "",
-        cep: "",
-        complemento: "",
-        ddd: "",
-        gia: "",
-        ibge: "",
-        localidade: "",
-        logradouro: "",
-        siafi: "",
-        uf: "",
-    });
+    const { address, setAddress } = useContext(CoffeContext);
 
     async function handleGetAddress(cep: string) {
         const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);

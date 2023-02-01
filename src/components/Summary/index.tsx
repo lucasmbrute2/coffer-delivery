@@ -17,13 +17,10 @@ import {
 export function Summary() {
     const { cart } = useContext(CoffeContext);
     const [totalItems, setTotalItems] = useState(0);
-    console.log("chamou");
 
     useEffect(() => {
-        console.log("chamou useEffect");
         const total = cart.reduce((acc, curr) => {
             const a = acc + curr.price * curr.quantity;
-            console.log(a);
             return a;
         }, 0);
 
