@@ -55,12 +55,19 @@ export const PaymentInstrumentSection = styled.section`
     gap: 0.75rem;
 `;
 
-export const PaymentInstrumentWrapper = styled.div`
+export const PaymentInstrumentWrapper = styled.button`
     display: flex;
     padding: 1rem 1.81rem 1rem 1rem;
 
     background-color: ${({ theme }) => theme["white-300"]};
     border-radius: 6px;
+
+    border: none;
+
+    &:focus {
+        background-color: ${({ theme }) => theme["purple-500"]};
+        box-shadow: 0 0 0 1px ${({ theme }) => theme["purple-100"]};
+    }
 
     > span {
         margin-right: 0.81rem;
