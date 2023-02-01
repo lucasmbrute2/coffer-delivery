@@ -19,7 +19,7 @@ interface ProductLineItemProps {
 export function ProductLineItem({
     pli: { id, name, quantity, imgSrc, price },
 }: ProductLineItemProps) {
-    const { setCart } = useContext(CoffeContext);
+    const { cart, setCart } = useContext(CoffeContext);
 
     function handlePlusQuantity() {
         setCart((prev) => {
@@ -52,6 +52,16 @@ export function ProductLineItem({
         });
     }
 
+    function handleRemoveProductLineItem() {
+        setCart((prev) => {
+            const cartWithRemovedItem = cart.filter((item) => item.id !== id);
+
+            if (!cartWithRemovedItem) return prev;
+
+            return cartWithRemovedItem;
+        });
+    }
+
     return (
         <Container>
             <SvgImport
@@ -77,7 +87,7 @@ export function ProductLineItem({
                         <span>
                             <Trash size={16} color="#8047F8" />
                         </span>
-                        <p>remover</p>
+                        <p onClick={handleRemoveProductLineItem}>remover</p>
                     </DeleteItemWrapper>
                 </ItemContainer>
             </ItemSummary>
