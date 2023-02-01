@@ -85,9 +85,7 @@ export const CoffeCardListSection = styled.section`
     margin: 9.25rem 0 9.81rem 0;
     > div {
         display: flex;
-        justify-content: space-around;
         flex-wrap: wrap;
-
         gap: 2rem;
     }
 
