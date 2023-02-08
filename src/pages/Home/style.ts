@@ -71,7 +71,7 @@ interface IconColorsProps {
 export const BenefitsIcon = styled.p<IconColorsProps>`
     background-color: ${({ theme, iconBackGroundColor }) =>
         theme[ICON_COLORS[iconBackGroundColor]]};
-    border-radius: 50%;
+    border-radius: 1000px;
 
     width: 2.06rem;
     height: 2.06rem;

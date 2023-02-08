@@ -14,7 +14,8 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: ${({ theme }) => theme["white-background"]};
-        max-width: calc(100% - 20rem);
+        max-width: 1120px;
+        width: 100%;
         margin: 0 auto;
     }
 
