@@ -27,27 +27,6 @@ export const ItemSummary = styled.div`
 
 export const ItemContainer = styled.div`
     display: flex;
-
-    > div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: 4.5rem;
-        height: 2rem;
-
-        padding: 0.5rem;
-        gap: 0.55rem;
-
-        border-radius: 6px;
-        margin-right: 0.5rem;
-
-        background-color: ${({ theme }) => theme["white-300"]};
-    }
-
-    span {
-        cursor: pointer;
-    }
 `;
 
 export const OperationsSymbol = styled.span`

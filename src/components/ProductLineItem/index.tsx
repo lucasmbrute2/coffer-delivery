@@ -11,6 +11,7 @@ import minusIcon from "../../assets/minus.svg";
 import plusIcon from "../../assets/plus.svg";
 import { Trash } from "phosphor-react";
 import { useContext } from "react";
+import { QuantityInput } from "../QuantityInput";
 
 interface ProductLineItemProps {
     pli: CoffeIntoCart;
@@ -44,15 +45,12 @@ export function ProductLineItem({ pli }: ProductLineItemProps) {
             <ItemSummary>
                 <p>{name}</p>
                 <ItemContainer>
-                    <div>
-                        <span onClick={handleMinusQuantity}>
-                            <img src={minusIcon} alt="" />
-                        </span>
-                        <p>{quantity}</p>
-                        <span onClick={handlePlusQuantity}>
-                            <img src={plusIcon} alt="" />
-                        </span>
-                    </div>
+                    <QuantityInput
+                        handleMinusQuantity={handleMinusQuantity}
+                        handlePlusQuantity={handlePlusQuantity}
+                        quantity={quantity}
+                        customHeight="2rem"
+                    />
 
                     <DeleteItemWrapper onClick={handleRemoveProductLineItem}>
                         <span>

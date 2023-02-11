@@ -1,18 +1,16 @@
 import { ShoppingCart } from "phosphor-react";
 import { useContext, useState } from "react";
-import minusIcon from "../../assets/minus.svg";
-import plusIcon from "../../assets/plus.svg";
+
 import { Coffe, CoffeContext } from "../../contexts/CoffeContext";
+import { QuantityInput } from "../QuantityInput";
 import { SvgImport } from "../SvgImport";
 import {
     CoffeCardPriceSection,
     CoffeCardPriceWrapper,
-    CoffeCardQuantitySection,
     CoffeCardQuantityWrapper,
     CoffeCardWrapper,
     CoffeLabel,
     CoffeLabelContainer,
-    Quantity,
 } from "./style";
 
 interface CoffeCardProps {
@@ -21,26 +19,26 @@ interface CoffeCardProps {
 
 export function CoffeCard({ coffe }: CoffeCardProps) {
     const { coffes, addItemToCart } = useContext(CoffeContext);
-    const [productQuantity, setProductQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(1);
 
     const { imgSrc, price, labels, description, name, id } = coffe;
     const activeCoffe = coffes.find((accCoffe) => accCoffe.id === id);
 
     function handleMinusQuantity() {
-        setProductQuantity((prev) => {
+        setQuantity((prev) => {
             if (prev <= 1) return prev;
             return (prev -= 1);
         });
     }
 
     function handlePlusQuantity() {
-        setProductQuantity((prev) => (prev += 1));
+        setQuantity((prev) => (prev += 1));
     }
 
     function handleAddToCart() {
         if (!activeCoffe) return;
-        addItemToCart(activeCoffe, productQuantity);
-        setProductQuantity(1);
+        addItemToCart(activeCoffe, quantity);
+        setQuantity(1);
     }
 
     return (
@@ -63,19 +61,15 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
             <CoffeCardPriceWrapper>
                 <CoffeCardPriceSection>
                     <p>R$</p>
-                    <p>{(price * productQuantity).toFixed(2)}</p>
+                    <p>{(price * quantity).toFixed(2)}</p>
                 </CoffeCardPriceSection>
 
                 <CoffeCardQuantityWrapper>
-                    <CoffeCardQuantitySection>
-                        <span onClick={handleMinusQuantity}>
-                            <img src={minusIcon} alt="" />
-                        </span>
-                        <Quantity>{productQuantity}</Quantity>
-                        <span onClick={handlePlusQuantity}>
-                            <img src={plusIcon} alt="" />
-                        </span>
-                    </CoffeCardQuantitySection>
+                    <QuantityInput
+                        quantity={quantity}
+                        handleMinusQuantity={handleMinusQuantity}
+                        handlePlusQuantity={handlePlusQuantity}
+                    />
                     <p onClick={handleAddToCart}>
                         <ShoppingCart size={22} weight="fill" color="white" />
                     </p>
