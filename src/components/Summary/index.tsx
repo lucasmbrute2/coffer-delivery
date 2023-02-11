@@ -15,23 +15,23 @@ import {
 } from "./style";
 
 export function Summary() {
-    const { cart } = useContext(CoffeContext);
+    const { cartState } = useContext(CoffeContext);
     const [totalItems, setTotalItems] = useState(0);
 
     useEffect(() => {
-        const total = cart.reduce((acc, curr) => {
+        const total = cartState.reduce((acc, curr) => {
             const a = acc + curr.price * curr.quantity;
             return a;
         }, 0);
 
         setTotalItems(total);
-    }, [cart]);
+    }, [cartState]);
 
     return (
         <div>
             <CartInformationTitle>Cafés selecionados</CartInformationTitle>
             <SummaryContainer>
-                {cart.map((item) => (
+                {cartState.map((item) => (
                     <div>
                         <ProductLineItem pli={item} />
                     </div>

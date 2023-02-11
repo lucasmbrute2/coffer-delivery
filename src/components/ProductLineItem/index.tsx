@@ -16,50 +16,21 @@ interface ProductLineItemProps {
     pli: CoffeIntoCart;
 }
 
-export function ProductLineItem({
-    pli: { id, name, quantity, imgSrc, price },
-}: ProductLineItemProps) {
-    const { cart, setCart } = useContext(CoffeContext);
+export function ProductLineItem({ pli }: ProductLineItemProps) {
+    const { editItemInCart, removeItem } = useContext(CoffeContext);
+    const { id, quantity, imgSrc, price, name } = pli;
 
     function handlePlusQuantity() {
-        setCart((prev) => {
-            const newArr = prev.map((i) => {
-                if (i.id !== id) return i;
-
-                i.quantity += 1;
-                return i;
-            });
-
-            return newArr;
-        });
+        editItemInCart({ ...pli, quantity: quantity + 1 });
     }
 
     function handleMinusQuantity() {
-        if (quantity <= 1) {
-            alert("Não é possível ter menos que 1 produto no carrinho.");
-            return;
-        }
-
-        setCart((prev) => {
-            const newArr = prev.map((i) => {
-                if (i.id !== id) return i;
-
-                i.quantity--;
-                return i;
-            });
-
-            return newArr;
-        });
+        if (quantity === 1) return;
+        editItemInCart({ ...pli, quantity: quantity - 1 });
     }
 
     function handleRemoveProductLineItem() {
-        setCart((prev) => {
-            const cartWithRemovedItem = cart.filter((item) => item.id !== id);
-
-            if (!cartWithRemovedItem) return prev;
-
-            return cartWithRemovedItem;
-        });
+        removeItem(id);
     }
 
     return (
@@ -71,7 +42,7 @@ export function ProductLineItem({
                 svgName={imgSrc}
             />
             <ItemSummary>
-                <p>Expresso tradicional</p>
+                <p>{name}</p>
                 <ItemContainer>
                     <div>
                         <span onClick={handleMinusQuantity}>
@@ -83,11 +54,11 @@ export function ProductLineItem({
                         </span>
                     </div>
 
-                    <DeleteItemWrapper>
+                    <DeleteItemWrapper onClick={handleRemoveProductLineItem}>
                         <span>
                             <Trash size={16} color="#8047F8" />
                         </span>
-                        <p onClick={handleRemoveProductLineItem}>remover</p>
+                        <p>remover</p>
                     </DeleteItemWrapper>
                 </ItemContainer>
             </ItemSummary>
