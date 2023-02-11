@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useReducer, useState } from "react";
+import {
+    addProductIntoCart,
+    editProductQuantityIntoCart,
+    removeItemFromCart,
+} from "../components/reducers/cart/actions";
+import { cartReducer } from "../components/reducers/cart/reducer";
 import { svgKeyName } from "../components/SvgImport";
 
 export interface Coffe {
@@ -41,6 +47,10 @@ interface CoffeContextData {
     setSelectedPaymentMehthod: React.Dispatch<React.SetStateAction<string>>;
     address: Address;
     setAddress: React.Dispatch<React.SetStateAction<Address>>;
+    addItemToCart: (item: CoffeIntoCart, quantity?: number) => void;
+    cartState: CoffeIntoCart[];
+    editItemInCart: (item: CoffeIntoCart) => void;
+    removeItem: (id: string) => void;
 }
 
 export const CoffeContext = createContext({} as CoffeContextData);
@@ -54,18 +64,24 @@ export function CoffeProvider({ children }: CoffeProviderrProps) {
     const [cart, setCart] = useState<CoffeIntoCart[]>([]);
     const [selectedPaymentMethod, setSelectedPaymentMehthod] = useState("");
 
-    const [address, setAddress] = useState({
-        bairro: "",
-        cep: "",
-        complemento: "",
-        ddd: "",
-        gia: "",
-        ibge: "",
-        localidade: "",
-        logradouro: "",
-        siafi: "",
-        uf: "",
-    });
+    const [address, setAddress] = useState({} as Address);
+
+    const [cartState, dispatch] = useReducer(
+        cartReducer,
+        [] as CoffeIntoCart[]
+    );
+
+    function addItemToCart(item: CoffeIntoCart, quantity = 1) {
+        dispatch(addProductIntoCart(item, quantity));
+    }
+
+    function editItemInCart(item: CoffeIntoCart) {
+        dispatch(editProductQuantityIntoCart(item));
+    }
+
+    function removeItem(id: string) {
+        dispatch(removeItemFromCart(id));
+    }
 
     return (
         <CoffeContext.Provider
@@ -78,6 +94,10 @@ export function CoffeProvider({ children }: CoffeProviderrProps) {
                 setSelectedPaymentMehthod,
                 address,
                 setAddress,
+                addItemToCart,
+                cartState,
+                editItemInCart,
+                removeItem,
             }}
         >
             {children}
