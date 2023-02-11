@@ -20,11 +20,11 @@ interface CoffeCardProps {
 }
 
 export function CoffeCard({ coffe }: CoffeCardProps) {
-    const { coffes, setCart } = useContext(CoffeContext);
-    const { imgSrc, price, labels, description, name, id } = coffe;
-
-    const activeCoffe = coffes.find((accCoffe) => accCoffe.id === id);
+    const { coffes, addItemToCart } = useContext(CoffeContext);
     const [productQuantity, setProductQuantity] = useState(1);
+
+    const { imgSrc, price, labels, description, name, id } = coffe;
+    const activeCoffe = coffes.find((accCoffe) => accCoffe.id === id);
 
     function handleMinusQuantity() {
         setProductQuantity((prev) => {
@@ -37,26 +37,9 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
         setProductQuantity((prev) => (prev += 1));
     }
 
-    //useReduce
     function handleAddToCart() {
         if (!activeCoffe) return;
-        setCart((prev) => {
-            const coffeAlreadyInCartIndex = prev.findIndex(
-                (coffe) => coffe.id === activeCoffe.id
-            );
-
-            if (coffeAlreadyInCartIndex != -1) {
-                return prev.map((cart, index) => {
-                    if (index === coffeAlreadyInCartIndex) {
-                        cart.quantity += productQuantity;
-                    }
-                    return cart;
-                });
-            }
-
-            return [...prev, { ...activeCoffe, quantity: productQuantity }];
-        });
-
+        addItemToCart(activeCoffe, productQuantity);
         setProductQuantity(1);
     }
 
